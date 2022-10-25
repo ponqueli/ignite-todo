@@ -1,5 +1,12 @@
+import { globalStyles } from "./styles/global";
+
 function App() {
-  return <h1>test</h1>;
+  return (
+    <>
+      <h1>Hello World</h1>
+      {globalStyles()}
+    </>
+  );
 }
 
 export default App;

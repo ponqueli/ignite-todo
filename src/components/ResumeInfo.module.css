@@ -1,0 +1,15 @@
+.resumeInfo{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 0,875rem;
+  line-height: 17px;
+}
+
+.createdTask{
+  color: var(--blue);
+}
+
+.doneTask{
+  color: var(--purple);
+}

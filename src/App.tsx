@@ -1,5 +1,6 @@
 import { PlusCircle } from "phosphor-react";
 import { Header } from "./components/Header";
+import { ResumeInfo } from "./components/ResumeInfo";
 import styles from "./App.module.css";
 import "./global.css";
 
@@ -23,6 +24,9 @@ function App() {
             Criar
             <PlusCircle size={20} color="var(--white)" />
           </button>
+        </div>
+        <div className={styles.resume}>
+          <ResumeInfo />
         </div>
       </main>
     </>

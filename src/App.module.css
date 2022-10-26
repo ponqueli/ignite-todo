@@ -2,7 +2,6 @@
   display: flex;
   gap: 0.25rem;
   align-items: center;
-  width: 100%;
   justify-content: center;
 } 
 
@@ -46,4 +45,8 @@
 
 .inputGroup button svg{
   margin-left: 0.5rem;
+}
+
+.resume{
+  margin-top: 4rem;
 }

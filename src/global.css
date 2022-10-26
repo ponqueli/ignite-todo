@@ -24,7 +24,7 @@
 }
 
 body{
-  background: var(--gray400);
+  background: var(--gray600);
   color: var(--gray300);
   font-family: 'Inter', sans-serif;
 }

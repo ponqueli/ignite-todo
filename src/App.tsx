@@ -3,6 +3,7 @@ import { Header } from "./components/Header";
 import { ResumeInfo } from "./components/ResumeInfo";
 import styles from "./App.module.css";
 import "./global.css";
+import { Task } from "./components/Task";
 
 function App() {
   return (
@@ -27,6 +28,10 @@ function App() {
         </div>
         <div className={styles.resume}>
           <ResumeInfo />
+
+          <div className={styles.tasks}>
+            <Task />
+          </div>
         </div>
       </main>
     </>

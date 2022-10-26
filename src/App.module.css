@@ -12,7 +12,7 @@
   background: var(--gray500);
   border-radius: 8px;
   outline: none;
-  color: var(--gray300);
+  color: var(--gray500);
   line-height: 1.4;
   height: 3.375rem;
   margin-top: -2rem;
@@ -26,6 +26,7 @@
   cursor: pointer;
   justify-content: center;
   padding: 1rem;
+  font-weight: bold;
   border: 1px solid var(--gray700);
   background: var(--blueDark);
   border-radius: 8px;
@@ -33,7 +34,7 @@
   color: var(--white);
   line-height: 1.4;
   height: 3.375rem;
-  margin-top: -2rem;
+  margin-top: -1.9rem;
   z-index: 1;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   transition: all 0.2s;
@@ -48,5 +49,14 @@
 }
 
 .resume{
-  margin-top: 4rem;
+  margin-top: 3rem;
+}
+
+.tasks{
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 778px;
 }

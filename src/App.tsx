@@ -31,6 +31,7 @@ function App() {
 
           <div className={styles.tasks}>
             <Task />
+            <Task />
           </div>
         </div>
       </main>

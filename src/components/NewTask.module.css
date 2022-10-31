@@ -44,6 +44,12 @@
   background: var(--blue);
 }
 
+.form button:disabled{
+  background: var(--disableBlue);
+  color: var(--gray300);
+  cursor: not-allowed;
+}
+
 .form button svg{
   margin-left: 0.5rem;
 }

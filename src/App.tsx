@@ -7,6 +7,7 @@ import styles from "./App.module.css";
 import "./global.css";
 import { Task } from "./components/Task";
 import { NewTask } from "./components/NewTask";
+import { EmptyList } from "./components/EmptyList";
 
 interface ITasks {
   id: string;
@@ -69,9 +70,11 @@ function App() {
           <ResumeInfo />
 
           <div className={styles.tasks}>
-            {taskList.map((task) => (
-              <Task key={task.id} task={task} changeIsComplete={changeIsComplete} deleteTask={deleteTask} />
-            ))}
+            {taskList.length === 0 ? <EmptyList /> :
+              taskList.map((task) => (
+                <Task key={task.id} task={task} changeIsComplete={changeIsComplete} deleteTask={deleteTask} />
+              ))
+            }
           </div>
         </div>
       </main>

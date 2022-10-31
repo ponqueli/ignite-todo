@@ -17,6 +17,8 @@ export function NewTask({
     event.target.setCustomValidity("Digite uma tarefa");
   };
 
+  const isDescriptionEmpty = description?.trim().length === 0;
+
   return (
     <form className={styles.form} onSubmit={onHandleSubmit}>
       <input
@@ -28,9 +30,9 @@ export function NewTask({
         onChange={onHandleNewTask}
         onInvalid={handleInputInvalid}
       />
-      <button type="submit">
+      <button type="submit" disabled={isDescriptionEmpty}>
         Criar
-        <PlusCircle size={20} color="var(--white)" />
+        {!isDescriptionEmpty && <PlusCircle size={20} color="var(--white)" />}
       </button>
     </form>
   );

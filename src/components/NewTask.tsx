@@ -22,7 +22,7 @@ export function NewTask({
   return (
     <form className={styles.form} onSubmit={onHandleSubmit}>
       <input
-        onKeyDown={(e) => e.key === "Enter" && onHandleSubmit(e)}
+        onKeyDown={(e) => e.key === "Enter" && !isDescriptionEmpty && onHandleSubmit(e)}
         type="text"
         placeholder="Adicione uma nova tarefa"
         required

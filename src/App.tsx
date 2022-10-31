@@ -57,6 +57,9 @@ function App() {
     setTaskList(todoListWithoutDeletedTask)
   }
 
+  const createdTasksQuantity = taskList.filter((task) => !task.isCompleted).length;
+  const completedTasksQuantity = taskList.filter((task) => task.isCompleted).length;
+  const isTaskListEmpty = taskList.length === 0;
   return (
     <>
       <Header />
@@ -67,10 +70,10 @@ function App() {
           onHandleSubmit={handleSubmit}
         />
         <div className={styles.resume}>
-          <ResumeInfo />
+          {!isTaskListEmpty && <ResumeInfo createdTasks={createdTasksQuantity} doneTasks={completedTasksQuantity} />}
 
           <div className={styles.tasks}>
-            {taskList.length === 0 ? <EmptyList /> :
+            {isTaskListEmpty ? <EmptyList /> :
               taskList.map((task) => (
                 <Task key={task.id} task={task} changeIsComplete={changeIsComplete} deleteTask={deleteTask} />
               ))

@@ -1,4 +1,5 @@
 import { Trash } from "phosphor-react";
+import toast, { Toaster } from 'react-hot-toast';
 import styles from "./Task.module.css";
 
 interface ITask {
@@ -12,6 +13,11 @@ interface ITask {
 }
 export function Task({ task, deleteTask, changeIsComplete }: ITask) {
   const { id, description, isCompleted } = task;
+
+  function showSucessfullToast(message: string): void {
+    toast.success(message)
+  }
+  
   const handleDeleteTask = () => {
     deleteTask(id);
   };
@@ -19,7 +25,6 @@ export function Task({ task, deleteTask, changeIsComplete }: ITask) {
   const handleChangeIsComplete = () => {
     changeIsComplete(id);
   };
-
 
   return (
     <div className={styles.container}>

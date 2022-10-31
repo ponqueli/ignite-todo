@@ -1,5 +1,6 @@
 /* eslint-disable react/jsx-no-bind */
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import toast, { Toaster } from 'react-hot-toast';
 import { v4 as uuidv4 } from "uuid";
 import { Header } from "./components/Header";
 import { ResumeInfo } from "./components/ResumeInfo";
@@ -20,6 +21,16 @@ function App() {
   const [description, setDescription] = useState<string>("");
   const key = "@IgniteToDo";
 
+  function showSucessfullToast(message: string): void {
+    toast.success(message, {
+      style: {
+        borderRadius: '10px',
+        background: 'var(--gray400)',
+        color: 'var(--gray100)',
+      }
+    });
+  }
+
   function handleNewTask(event: ChangeEvent<HTMLInputElement>) {
     event.target.setCustomValidity("");
     setDescription(event.target.value);
@@ -38,6 +49,7 @@ function App() {
 
     setTaskList(tasksToSave);
     localStorage.setItem(key, JSON.stringify(tasksToSave));
+    showSucessfullToast('Tarefa criada com sucesso!');
     setDescription("");
   }
 
@@ -51,6 +63,7 @@ function App() {
     })
 
     localStorage.setItem(key, JSON.stringify(todoListWithChangedTask));
+    showSucessfullToast('Tarefa alterada com sucesso!');
     setTaskList(todoListWithChangedTask);
   }
 
@@ -60,7 +73,8 @@ function App() {
     })
 
     localStorage.setItem(key, JSON.stringify(todoListWithoutDeletedTask));
-    setTaskList(todoListWithoutDeletedTask)
+    setTaskList(todoListWithoutDeletedTask);
+    showSucessfullToast('Tarefa excluída com sucesso!');
   }
 
   const getSavedTasks = (key: string): ITasks[] => {
@@ -103,6 +117,10 @@ function App() {
           </div>
         </div>
       </main>
+      <Toaster
+        position="top-right"
+        reverseOrder={false}
+      />
     </>
   );
 }

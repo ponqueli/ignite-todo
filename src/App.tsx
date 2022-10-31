@@ -10,7 +10,7 @@ function App() {
     <>
       <Header />
       <main>
-        <div className={styles.inputGroup}>
+        <form className={styles.inputGroup}>
           <input
             // onKeyDown={(e) => e.key === "Enter" && handleCreateNewTask()}
             type="text"
@@ -25,7 +25,7 @@ function App() {
             Criar
             <PlusCircle size={20} color="var(--white)" />
           </button>
-        </div>
+        </form>
         <div className={styles.resume}>
           <ResumeInfo />
 

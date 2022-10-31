@@ -43,3 +43,14 @@
   color: var(--danger);
 }
 
+.taskChecked {
+  line-height: var(--line-height);
+  color: var(--gray-300);
+  text-decoration: line-through;
+}
+
+.taskUnchecked {
+  line-height: 1.4;
+  color: var(--gray100);
+}
+

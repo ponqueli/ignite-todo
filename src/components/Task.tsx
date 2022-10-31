@@ -23,7 +23,7 @@ export function Task({ task, deleteTask, changeIsComplete }: ITask) {
 
   return (
     <div className={styles.container}>
-      <input type="checkbox" className={styles.checkBox} onClick={handleChangeIsComplete} />
+      <input type="checkbox" className={styles.checkBox} onClick={handleChangeIsComplete} checked={isCompleted} />
       <p className={isCompleted ? styles.taskChecked : styles.taskUnchecked}>{description}</p>
       <button type="button" onClick={handleDeleteTask} >
         <Trash size={24} />

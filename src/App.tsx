@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-no-bind */
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { Header } from "./components/Header";
 import { ResumeInfo } from "./components/ResumeInfo";
@@ -18,6 +18,7 @@ interface ITasks {
 function App() {
   const [taskList, setTaskList] = useState(Array<ITasks>);
   const [description, setDescription] = useState<string>("");
+  const key = "@IgniteToDo";
 
   function handleNewTask(event: ChangeEvent<HTMLInputElement>) {
     event.target.setCustomValidity("");
@@ -26,14 +27,17 @@ function App() {
 
   function handleSubmit(event: FormEvent) {
     event.preventDefault();
-    setTaskList([
+    const tasksToSave = [
       ...taskList,
       {
         id: uuidv4(),
         description,
         isCompleted: false,
       },
-    ]);
+    ];
+
+    setTaskList(tasksToSave);
+    localStorage.setItem(key, JSON.stringify(tasksToSave));
     setDescription("");
   }
 
@@ -46,6 +50,7 @@ function App() {
       return task;
     })
 
+    localStorage.setItem(key, JSON.stringify(todoListWithChangedTask));
     setTaskList(todoListWithChangedTask);
   }
 
@@ -54,8 +59,25 @@ function App() {
       return task.id !== id
     })
 
+    localStorage.setItem(key, JSON.stringify(todoListWithoutDeletedTask));
     setTaskList(todoListWithoutDeletedTask)
   }
+
+  const getSavedTasks = (key: string): ITasks[] => {
+    const myTasks = localStorage.getItem(key);
+    if (myTasks) {
+      return JSON.parse(myTasks);
+    }
+    return [];
+  }
+
+  useEffect(() => {
+    function getTasks() {
+      const result = getSavedTasks(key);
+      setTaskList(result);
+    }
+    getTasks();
+  }, []);
 
   const createdTasksQuantity = taskList.filter((task) => !task.isCompleted).length;
   const completedTasksQuantity = taskList.filter((task) => task.isCompleted).length;
